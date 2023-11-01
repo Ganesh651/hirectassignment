@@ -22,7 +22,7 @@ const initializeDBAndServer = async ()=>{
                   filename: dbPath,
                   driver: sqlite3.Database
             })
-            app.listen(5000, ()=>console.log("Server Running"))
+            app.listen(6000, ()=>console.log("Server Running"))
       }catch(e){
             console.log(e.message)
             process.exit(1)
@@ -44,7 +44,7 @@ app.post("/register", async (req,res)=>{
       }else{
             const createNewUser = `INSERT INTO users (username, password) VALUES ("${username}","${hashedPaasword}");`
             const dbResponse = await db.run(createNewUser)
-            res.send("Account Created")
+            res.send({message: "Account Created"})
       }
 })
 
@@ -65,7 +65,7 @@ app.post("/login", async(req,res)=>{
                   const payload = {username: username}
                   const jwtToken = jwt.sign(payload,"gajarla")
                   res.status(200)
-                  res.send(jwtToken)
+                  res.send({jwtToken: jwtToken})
             }
       }
 })
@@ -104,20 +104,37 @@ app.post("/add-products", authUser, async(req,res)=>{
 
 app.delete("/delete-product/:id", authUser, async(req,res)=>{
       const {id} = req.params 
-      const deleteProduct = `DELETE FROM products WHERE id = ${id}`
-      const dbResponse = await db.run(deleteProduct)
-      res.send("Product removed")
+      console.log(id)
+      const isProductExist = `SELECT * FROM products WHERE id = ${id}`
+      const response = await db.get(isProductExist)
+       if (response === undefined){
+            res.status(400)
+            res.send({message:"No products matched"})
+      }
+     else{
+            const deleteProduct = `DELETE FROM products WHERE id = ${id}`
+            const dbResponse = await db.run(deleteProduct)
+            res.status(200)
+            res.send({message:"Product removed"})
+      }
 })
 
 app.get("/products", authUser, async(req,res)=>{
       const getProducts = `SELECT * FROM products`
       const dbResponse = await db.all(getProducts)
-      res.send(dbResponse)
+      res.send({data: dbResponse})
 })
 
 app.get("/products/:id", authUser, async(req,res)=>{
-      const {id} = req.params 
+      const {id} = req.params
       const getSpecificProduct = `SELECT * FROM products WHERE id = ${id}`
       const dbResponse = await db.get(getSpecificProduct)
-      res.send(dbResponse)
+      if (dbResponse === undefined){
+            res.status(400)
+            res.send({message:"Product notfound"})
+      }else{
+            res.status(200)
+            res.send({data:dbResponse})
+      }
+      
 })

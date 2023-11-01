@@ -1,5 +1,5 @@
 ###
-POST http://localhost:5000/register
+POST http://localhost:6000/register
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:5000/login
+POST http://localhost:6000/login
 Content-Type: application/json
 
 {
@@ -17,9 +17,9 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:5000/add-products
+POST http://localhost:6000/add-products
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgzMjQ1Nn0.Fb9enJKOLaCsdmi5bNoN83ogbQoMDcp8YUta4qmQK9g
 
 {
       "image": "https://res.cloudinary.com/dky69roxl/image/upload/v1698555761/Avatar_gdobtx.png",
@@ -29,12 +29,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIs
 }
 ###
 
-DELETE http://localhost:5000/delete-product/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+
+DELETE http://localhost:6000/delete-product/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgzMjQ1Nn0.Fb9enJKOLaCsdmi5bNoN83ogbQoMDcp8YUta4qmQK9g
 ###
 
-GET http://localhost:5000/products
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+GET http://localhost:6000/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgzMjQ1Nn0.Fb9enJKOLaCsdmi5bNoN83ogbQoMDcp8YUta4qmQK9g
 ###
-GET http://localhost:5000/products/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+GET http://localhost:6000/products/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgzMjQ1Nn0.Fb9enJKOLaCsdmi5bNoN83ogbQoMDcp8YUta4qmQK9g
