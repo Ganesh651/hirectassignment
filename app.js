@@ -9,8 +9,9 @@ const sqlite3 = require("sqlite3");
 const { error } = require("console");
 
 const app = express()
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
+
 
 const dbPath = path.join(__dirname, "products.db")
 let db = null 
