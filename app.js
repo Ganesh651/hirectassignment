@@ -54,14 +54,17 @@ app.post("/login", async(req,res)=>{
       const dbResponse = await db.get(isUserExist)
 
       if (dbResponse === undefined){
-            res.send("User not found")
+            res.status(400)
+            res.send({error_msg:"User not found"})
       }else{
             const dbUserPassword = await bcrypt.compare(password,dbResponse.password)
             if (!dbUserPassword){
-                  res.send({"error_msg": "Password didn't match"})
+                  res.status(400)
+                  res.send({error_msg: "Password didn't match"})
             }else{
                   const payload = {username: username}
                   const jwtToken = jwt.sign(payload,"gajarla")
+                  res.status(200)
                   res.send(jwtToken)
             }
       }
