@@ -15,3 +15,26 @@ Content-Type: application/json
       "username":"ganesh",
       "password":"Ganesh#1995"
 }
+###
+
+POST http://localhost:5000/add-products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+
+{
+      "image": "https://res.cloudinary.com/dky69roxl/image/upload/v1698555761/Avatar_gdobtx.png",
+      "title":"Jeans pant",
+      "category":"category",
+      "price": 500
+}
+###
+
+DELETE http://localhost:5000/delete-product/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+###
+
+GET http://localhost:5000/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY
+###
+GET http://localhost:5000/products/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhbmVzaCIsImlhdCI6MTY5ODgyNTY3OX0.01QFoQOaRwAIP8OH4kFCLq7aTwf_5TyoOIG0hpN5DIY

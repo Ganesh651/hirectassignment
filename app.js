@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const {open} = require("sqlite");
 const sqlite3 = require("sqlite3");
+const { error } = require("console");
 
 const app = express()
 app.use(express.json())
@@ -85,3 +86,34 @@ const authUser = (req,res,next)=>{
       }
 }
 
+app.post("/add-products", authUser, async(req,res)=>{
+      const {image,title,category,price}  =  req.body 
+
+     try{
+            const addProduct = `INSERT INTO products (image,title,category,price) VALUES("${image}","${title}","${category}",${price});`
+            const dbResponse = await db.run(addProduct)
+            res.send({message:"Product has been added"})
+     }catch(error){
+      console.log(error)
+     }
+})
+
+app.delete("/delete-product/:id", authUser, async(req,res)=>{
+      const {id} = req.params 
+      const deleteProduct = `DELETE FROM products WHERE id = ${id}`
+      const dbResponse = await db.run(deleteProduct)
+      res.send("Product removed")
+})
+
+app.get("/products", authUser, async(req,res)=>{
+      const getProducts = `SELECT * FROM products`
+      const dbResponse = await db.all(getProducts)
+      res.send(dbResponse)
+})
+
+app.get("/products/:id", authUser, async(req,res)=>{
+      const {id} = req.params 
+      const getSpecificProduct = `SELECT * FROM products WHERE id = ${id}`
+      const dbResponse = await db.get(getSpecificProduct)
+      res.send(dbResponse)
+})
