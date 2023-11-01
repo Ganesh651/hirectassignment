@@ -11,7 +11,7 @@
   "license": "ISC",
   "engines": {
     "node": "20.9.0",
-    "npm": "9.7.1"
+    "npm": "10.2.2"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
